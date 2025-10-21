@@ -3,89 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Connecting the Ghanaian community in Hungary through events, culture, and friendship." />
-  <title>Hunghanians - Roots. Connect.</title>
-
-  <!-- Preconnects for performance -->
+  <title>Ghanaian Community</title>
+  <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- JA Jayagiri Font -->
-  <link href="https://fonts.cdnfonts.com/css/ja-jayagiri-sans" rel="stylesheet">
-
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-Vr9D3fZShL1r8Cg2dWv6Y1m/zI6+J5y4VJ8h/3VdU6y+7tZz+Wk4y5Zc5T5hT6bTfh4D2pXG0U6d3D+/W+R4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- Custom stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
-  <header>
-    <h1>Hunghanians</h1>
+  <!-- HEADER -->
+  <header class="header">
+    <h1>Akwaaba</h1>
+    <p>Welcome to the Ghanaian Community</p>
   </header>
 
-  <main>
-    <section id="event">
-      <div class="event-card">
-        <h2 class="event-title">Ghanaian Get Together Party</h2>
-        <p class="event-description">
-          Hello dear friend! If you’d like to take part in the Ghanaian Get Together Party, please fill out this 3-minute registration form.
-          It’s important to complete it, as this information helps us plan food and drinks for the event.
-        </p>
+  <!-- CARDS SECTION -->
+  <section class="cards-section">
+    <div class="card">
+      <h2>Community</h2>
+      <p>Connecting Ghanaians across Hungary through culture, unity, and friendship.</p>
+    </div>
+    <div class="card">
+      <h2>Events</h2>
+      <p>Join our gatherings to celebrate Ghanaian culture, food, and music!</p>
+    </div>
+    <div class="card">
+      <h2>Support</h2>
+      <p>We’re here to help one another and share valuable information for everyday life.</p>
+    </div>
+  </section>
 
-        <div class="event-details">
-          <div class="detail-item">
-            <div class="detail-icon">📍</div>
-            <div class="detail-content">
-              <h3>Location</h3>
-              <p>Inárcs, Szőlőhegy, 2365 (KEMP)</p>
-            </div>
-          </div>
+  <!-- EVENT DETAILS -->
+  <section class="event-details">
+    <h2>Ghanaian Get Together Party</h2>
+    <p>Hello dear friend!<br>
+      If you’d like to take part in the Ghanaian Get Together Party, please fill out this 3-minute registration form.<br>
+      It’s important to complete it, as this information helps us plan food and drinks for the event.<br><br>
+      📍 <b>Location:</b> Inárcs, Szőlőhegy, 2365 (KEMP)<br>
+      📅 <b>Date:</b> August 8–9, 2026<br>
+      💰 <b>Participation fee:</b><br>
+      – Adults: 10,000 HUF / person<br>
+      – Children (ages 6–14): 5,000 HUF / person<br><br>
+      The participation fee must be paid by bank transfer within 5 days after registration — unfortunately, without payment, we won’t be able to confirm your spot at the event.
+    </p>
 
-          <div class="detail-item">
-            <div class="detail-icon">📅</div>
-            <div class="detail-content">
-              <h3>Date</h3>
-              <p>August 8–9, 2026</p>
-            </div>
-          </div>
+    <div class="event-buttons">
+      <a href="https://facebook.com/eventlink" target="_blank" class="btn btn-fb">
+        <i class="fab fa-facebook-f"></i> View Facebook event
+      </a>
+      <a href="https://registrationform.com" target="_blank" class="btn btn-register">
+        📝 Register here
+      </a>
+    </div>
+  </section>
 
-          <div class="detail-item">
-            <div class="detail-icon">💰</div>
-            <div class="detail-content">
-              <h3>Participation Fee</h3>
-              <p>Adults: 10,000 HUF / Children (6–14): 5,000 HUF</p>
-            </div>
-          </div>
-        </div>
+  <!-- CONTACT SECTION -->
+  <section class="contact-section">
+    <h2>Contact us</h2>
+    <p>If you have any questions, feel free to reach out!</p>
+    <a href="mailto:hunghanians@gmail.com" class="btn">Send us an email</a>
+  </section>
 
-        <div class="event-buttons">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="contact-button event-button left-button">
-            <i class="fab fa-facebook-f" aria-label="Facebook"></i> Facebook Event
-          </a>
-
-          <a href="https://docs.google.com/forms/d/1s4tyGlh01djRyoiZPimXUjb_PSEqfbLgj7vmx87SHZI/preview"
-             target="_blank" rel="noopener noreferrer"
-             class="contact-button event-button right-button">
-            <i class="fa-solid fa-user-plus" aria-label="Register"></i> Register
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <p>If you have any questions, feel free to reach out to us!</p>
-      <a href="mailto:info@hunghanians.hu" class="contact-button">Send Email</a>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Hunghanians. All rights reserved.</p>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 Ghanaian Community. All rights reserved.</p>
   </footer>
 </body>
 </html>
