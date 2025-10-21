@@ -1,137 +1,171 @@
-:root {
-  --ghana-red: #e63946;
-  --ghana-yellow: #f1c40f;
-  --ghana-green: #2ecc71;
-  --ghana-black: #000;
-  --ghana-white: #fff;
-  --text-dark: #333;
-}
-
-/* General reset */
-body {
-  font-family: 'Space Grotesk', sans-serif;
+/* GENERAL RESET */
+* {
   margin: 0;
   padding: 0;
-  color: var(--text-dark);
-  background-color: var(--ghana-white);
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-h1, h2, h3 {
-  font-family: 'JA Jayagiri Sans', sans-serif;
+body {
+  background-color: #fdfdfd;
+  color: #222;
+  line-height: 1.6;
 }
 
-/* Header */
-header {
+/* HEADER */
+.header {
+  background: url('background.jpg') center/cover no-repeat;
+  color: white;
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 100px 20px;
+  position: relative;
 }
 
-/* Event Section */
-#event {
-  background: linear-gradient(to bottom, #fceabb, #f8b500);
-  padding: 3rem 1.5rem;
-  text-align: center;
+/* LOGO */
+.logo {
+  width: 100px;
+  height: auto;
+  position: absolute;
+  top: 25px;
+  left: 25px;
 }
 
-.event-card {
-  background: var(--ghana-white);
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.event-title {
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  margin-bottom: 1rem;
-}
-
-.event-description {
-  font-size: clamp(1rem, 2.5vw, 1.1rem);
-  color: #444;
-  line-height: 1.8;
-  margin-bottom: 2rem;
-}
-
-/* Detail Items */
-.detail-item {
+.navbar {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.detail-icon {
-  font-size: 1.5rem;
-  margin-right: 1rem;
+.header-text h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
 }
 
-.detail-content h3 {
-  margin: 0;
-  font-size: 1rem;
+.header-text p {
+  font-size: 1.2em;
 }
 
-.detail-content p {
-  margin: 0.2rem 0 0;
-  color: #555;
+/* CARDS SECTION */
+.cards-section {
+  background-color: #f1c40f; /* same as first card’s color */
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
-/* Buttons */
-.contact-button {
-  background: var(--ghana-yellow);
-  color: var(--ghana-black);
-  padding: 0.9rem 1.5rem;
-  border-radius: 999px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: 0.3s ease;
-  display: inline-block;
+.card {
+  background-color: white;
+  color: #222;
+  padding: 25px;
+  border-radius: 15px;
+  width: 280px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
-.contact-button:hover {
-  background: var(--ghana-green);
-  color: var(--ghana-white);
+/* EVENT DETAILS */
+.event-details {
+  background-color: #f1c40f;
+  padding: 60px 20px;
+  text-align: center;
+  color: #222;
 }
 
-/* Event Buttons container */
+.event-details h2 {
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
 .event-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* BUTTONS */
+.btn {
+  background-color: #222;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
   align-items: center;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 8px;
+  font-weight: 500;
 }
 
-.event-button {
-  flex: 1;
+.btn:hover {
+  background-color: #000;
+}
+
+.btn-fb {
+  background-color: #3b5998;
+}
+
+.btn-fb:hover {
+  background-color: #2e4a86;
+}
+
+.btn-register {
+  background-color: #27ae60;
+}
+
+.btn-register:hover {
+  background-color: #1e8c4d;
+}
+
+/* CONTACT SECTION */
+.contact-section {
+  background: url('background_down.jpg') center/cover no-repeat;
+  color: white;
   text-align: center;
-  font-size: clamp(0.9rem, 2vw, 1rem);
+  padding: 80px 20px;
 }
 
-.event-button i {
-  margin-right: 0.5rem;
+.contact-section .btn {
+  background-color: white;
+  color: #222;
+  font-weight: 600;
 }
 
-/* Contact Section */
-#contact {
-  background: var(--ghana-red);
-  color: var(--ghana-white);
+.contact-section .btn:hover {
+  background-color: #ddd;
+}
+
+/* FOOTER */
+.footer {
+  background-color: #222;
+  color: white;
   text-align: center;
-  padding: 3rem 1.5rem;
+  padding: 25px;
+  font-size: 0.9em;
 }
 
-/* Footer */
-footer {
-  background: var(--ghana-black);
-  color: var(--ghana-white);
-  text-align: center;
-  padding: 1.5rem 1rem;
-  font-size: 0.9rem;
-}
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .header-text h1 {
+    font-size: 2.2em;
+  }
 
-/* Responsive */
-@media (max-width: 600px) {
+  .cards-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .event-buttons {
     flex-direction: column;
+  }
+
+  .logo {
+    width: 80px;
+    top: 15px;
+    left: 15px;
   }
 }
