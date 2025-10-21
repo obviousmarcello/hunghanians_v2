@@ -1,0 +1,137 @@
+:root {
+  --ghana-red: #e63946;
+  --ghana-yellow: #f1c40f;
+  --ghana-green: #2ecc71;
+  --ghana-black: #000;
+  --ghana-white: #fff;
+  --text-dark: #333;
+}
+
+/* General reset */
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--text-dark);
+  background-color: var(--ghana-white);
+}
+
+h1, h2, h3 {
+  font-family: 'JA Jayagiri Sans', sans-serif;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+/* Event Section */
+#event {
+  background: linear-gradient(to bottom, #fceabb, #f8b500);
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.event-card {
+  background: var(--ghana-white);
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.event-title {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  margin-bottom: 1rem;
+}
+
+.event-description {
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+/* Detail Items */
+.detail-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.detail-icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.detail-content h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.detail-content p {
+  margin: 0.2rem 0 0;
+  color: #555;
+}
+
+/* Buttons */
+.contact-button {
+  background: var(--ghana-yellow);
+  color: var(--ghana-black);
+  padding: 0.9rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+  display: inline-block;
+}
+
+.contact-button:hover {
+  background: var(--ghana-green);
+  color: var(--ghana-white);
+}
+
+/* Event Buttons container */
+.event-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.event-button {
+  flex: 1;
+  text-align: center;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+.event-button i {
+  margin-right: 0.5rem;
+}
+
+/* Contact Section */
+#contact {
+  background: var(--ghana-red);
+  color: var(--ghana-white);
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+
+/* Footer */
+footer {
+  background: var(--ghana-black);
+  color: var(--ghana-white);
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .event-buttons {
+    flex-direction: column;
+  }
+}
