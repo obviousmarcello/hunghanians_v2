@@ -803,6 +803,123 @@
                 font-size: 1.6rem;
             }
         }
+        /* Easter Egg Snake Game Styles */
+            #snakeGame {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                z-index: 9999;
+                animation: fadeIn 0.3s ease;
+            }
+            
+            #snakeCanvas {
+                display: block;
+                margin: 0 auto;
+                background: #1a1a1a;
+                border: 4px solid var(--ghana-yellow);
+                box-shadow: 0 0 30px rgba(252, 209, 22, 0.5);
+            }
+            
+            .snake-game-ui {
+                position: absolute;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: white;
+                font-size: 1.5rem;
+                font-weight: bold;
+                text-align: center;
+                width: 90%;
+                max-width: 800px;
+                display: flex;
+                justify-content: space-between;
+                padding: 0 20px;
+            }
+            
+            .snake-game-score {
+                color: var(--ghana-yellow);
+            }
+            
+            .snake-game-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: var(--ghana-red);
+                color: white;
+                border: none;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                font-size: 1.5rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                z-index: 10000;
+            }
+            
+            .snake-game-close:hover {
+                background: var(--ghana-yellow);
+                color: var(--ghana-black);
+                transform: rotate(90deg);
+            }
+            
+            .snake-game-instructions {
+                position: absolute;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: white;
+                text-align: center;
+                font-size: 1rem;
+                opacity: 0.8;
+            }
+            
+            .snake-game-over-screen {
+                display: none;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 3rem;
+                border-radius: 20px;
+                text-align: center;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+                min-width: 300px;
+            }
+            
+            .snake-game-over-screen h2 {
+                color: var(--ghana-red);
+                margin-bottom: 1rem;
+                font-size: 2.5rem;
+            }
+            
+            .snake-game-over-screen p {
+                color: var(--ghana-black);
+                margin-bottom: 2rem;
+                font-size: 1.3rem;
+            }
+            
+            .snake-game-restart-btn {
+                background: var(--ghana-green);
+                color: white;
+                border: none;
+                padding: 1rem 2rem;
+                border-radius: 50px;
+                font-weight: bold;
+                font-size: 1.1rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            
+            .snake-game-restart-btn:hover {
+                background: var(--ghana-yellow);
+                color: var(--ghana-black);
+                transform: translateY(-3px);
+            }
     </style>
 </head>
 <body>
@@ -1197,6 +1314,347 @@
                 contactForm.reset();
             }
         });
+    // ========== SNAKE GAME ==========
+        let gPressCount = 0;
+        let gPressTimer = null;
+        
+        // Detect 'G' key pressed 3 times quickly
+        document.addEventListener('keydown', (e) => {
+            if (e.key.toLowerCase() === 'g') {
+                gPressCount++;
+                
+                if (gPressTimer) clearTimeout(gPressTimer);
+                
+                if (gPressCount === 3) {
+                    startSnakeGame();
+                    gPressCount = 0;
+                } else {
+                    gPressTimer = setTimeout(() => {
+                        gPressCount = 0;
+                    }, 500);
+                }
+            }
+        });
+        
+        // Snake Game variables
+        const snakeGameContainer = document.getElementById('snakeGame');
+        const snakeCanvas = document.getElementById('snakeCanvas');
+        const snakeCtx = snakeCanvas.getContext('2d');
+        const snakeScoreEl = document.getElementById('snakeScore');
+        const snakeHighScoreEl = document.getElementById('snakeHighScore');
+        const snakeGameOverScreen = document.getElementById('snakeGameOverScreen');
+        const snakeFinalScoreEl = document.getElementById('snakeFinalScore');
+        const snakeGameRestartBtn = document.getElementById('snakeGameRestart');
+        const snakeGameCloseBtn = document.getElementById('snakeGameClose');
+        
+        let snakeGameActive = false;
+        let snakeScore = 0;
+        let snakeHighScore = 0;
+        let snake = [];
+        let snakeDirection = { x: 1, y: 0 };
+        let nextDirection = { x: 1, y: 0 };
+        let food = { x: 0, y: 0 };
+        let gridSize = 20;
+        let tileCount = 0;
+        let snakeSpeed = 100;
+        let snakeGameLoop;
+        let lastRenderTime = 0;
+        
+        const GHANA_COLORS = {
+            red: '#CE1126',
+            yellow: '#FCD116',
+            green: '#006B3F',
+            black: '#000000'
+        };
+        
+        function resizeSnakeCanvas() {
+            const maxWidth = Math.min(window.innerWidth - 40, 600);
+            const maxHeight = Math.min(window.innerHeight - 200, 600);
+            const size = Math.min(maxWidth, maxHeight);
+            
+            snakeCanvas.width = size;
+            snakeCanvas.height = size;
+            tileCount = Math.floor(size / gridSize);
+        }
+        
+        function startSnakeGame() {
+            snakeGameContainer.style.display = 'block';
+            snakeGameOverScreen.style.display = 'none';
+            document.body.style.overflow = 'hidden';
+            
+            resizeSnakeCanvas();
+            snakeScore = 0;
+            snakeDirection = { x: 1, y: 0 };
+            nextDirection = { x: 1, y: 0 };
+            snake = [
+                { x: Math.floor(tileCount / 2), y: Math.floor(tileCount / 2) },
+                { x: Math.floor(tileCount / 2) - 1, y: Math.floor(tileCount / 2) },
+                { x: Math.floor(tileCount / 2) - 2, y: Math.floor(tileCount / 2) }
+            ];
+            snakeGameActive = true;
+            
+            spawnFood();
+            updateSnakeScore();
+            
+            lastRenderTime = 0;
+            requestAnimationFrame(snakeGameTick);
+        }
+        
+        function endSnakeGame() {
+            snakeGameActive = false;
+            if (snakeScore > snakeHighScore) {
+                snakeHighScore = snakeScore;
+                snakeHighScoreEl.textContent = snakeHighScore;
+            }
+            snakeFinalScoreEl.textContent = snakeScore;
+            snakeGameOverScreen.style.display = 'block';
+        }
+        
+        function closeSnakeGame() {
+            snakeGameActive = false;
+            snakeGameContainer.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function updateSnakeScore() {
+            snakeScoreEl.textContent = snakeScore;
+            snakeHighScoreEl.textContent = snakeHighScore;
+        }
+        
+        function spawnFood() {
+            let validPosition = false;
+            while (!validPosition) {
+                food.x = Math.floor(Math.random() * tileCount);
+                food.y = Math.floor(Math.random() * tileCount);
+                
+                validPosition = true;
+                for (let segment of snake) {
+                    if (segment.x === food.x && segment.y === food.y) {
+                        validPosition = false;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        function drawSnake() {
+            snake.forEach((segment, index) => {
+                // Gradient from red to green through yellow
+                let color;
+                if (index === 0) {
+                    color = GHANA_COLORS.red; // Head
+                } else if (index < snake.length / 3) {
+                    color = GHANA_COLORS.red;
+                } else if (index < (snake.length * 2) / 3) {
+                    color = GHANA_COLORS.yellow;
+                } else {
+                    color = GHANA_COLORS.green;
+                }
+                
+                snakeCtx.fillStyle = color;
+                snakeCtx.fillRect(
+                    segment.x * gridSize + 1,
+                    segment.y * gridSize + 1,
+                    gridSize - 2,
+                    gridSize - 2
+                );
+                
+                // Draw eyes on head
+                if (index === 0) {
+                    snakeCtx.fillStyle = 'white';
+                    snakeCtx.fillRect(
+                        segment.x * gridSize + 5,
+                        segment.y * gridSize + 5,
+                        4,
+                        4
+                    );
+                    snakeCtx.fillRect(
+                        segment.x * gridSize + 11,
+                        segment.y * gridSize + 5,
+                        4,
+                        4
+                    );
+                    snakeCtx.fillStyle = GHANA_COLORS.black;
+                    snakeCtx.fillRect(
+                        segment.x * gridSize + 6,
+                        segment.y * gridSize + 6,
+                        2,
+                        2
+                    );
+                    snakeCtx.fillRect(
+                        segment.x * gridSize + 12,
+                        segment.y * gridSize + 6,
+                        2,
+                        2
+                    );
+                }
+            });
+        }
+        
+        function drawFood() {
+            // Draw a star (black star from Ghana flag)
+            const centerX = food.x * gridSize + gridSize / 2;
+            const centerY = food.y * gridSize + gridSize / 2;
+            
+            snakeCtx.fillStyle = GHANA_COLORS.black;
+            drawStar(centerX, centerY, 5, gridSize / 3, gridSize / 6);
+        }
+        
+        function drawStar(cx, cy, spikes, outerRadius, innerRadius) {
+            let rot = Math.PI / 2 * 3;
+            let x = cx;
+            let y = cy;
+            const step = Math.PI / spikes;
+        
+            snakeCtx.beginPath();
+            snakeCtx.moveTo(cx, cy - outerRadius);
+            for (let i = 0; i < spikes; i++) {
+                x = cx + Math.cos(rot) * outerRadius;
+                y = cy + Math.sin(rot) * outerRadius;
+                snakeCtx.lineTo(x, y);
+                rot += step;
+        
+                x = cx + Math.cos(rot) * innerRadius;
+                y = cy + Math.sin(rot) * innerRadius;
+                snakeCtx.lineTo(x, y);
+                rot += step;
+            }
+            snakeCtx.lineTo(cx, cy - outerRadius);
+            snakeCtx.closePath();
+            snakeCtx.fill();
+        }
+        
+        function moveSnake() {
+            snakeDirection = { ...nextDirection };
+            
+            const head = { x: snake[0].x + snakeDirection.x, y: snake[0].y + snakeDirection.y };
+            
+            // Check wall collision
+            if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
+                endSnakeGame();
+                return false;
+            }
+            
+            // Check self collision
+            for (let segment of snake) {
+                if (head.x === segment.x && head.y === segment.y) {
+                    endSnakeGame();
+                    return false;
+                }
+            }
+            
+            snake.unshift(head);
+            
+            // Check food collision
+            if (head.x === food.x && head.y === food.y) {
+                snakeScore += 10;
+                updateSnakeScore();
+                spawnFood();
+            } else {
+                snake.pop();
+            }
+            
+            return true;
+        }
+        
+        function snakeGameTick(currentTime) {
+            if (!snakeGameActive) return;
+            
+            const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000;
+            if (secondsSinceLastRender < 1 / (10 + snakeScore / 10)) {
+                requestAnimationFrame(snakeGameTick);
+                return;
+            }
+            
+            lastRenderTime = currentTime;
+            
+            // Clear canvas
+            snakeCtx.fillStyle = '#1a1a1a';
+            snakeCtx.fillRect(0, 0, snakeCanvas.width, snakeCanvas.height);
+            
+            // Draw grid
+            snakeCtx.strokeStyle = '#2d2d2d';
+            snakeCtx.lineWidth = 1;
+            for (let i = 0; i <= tileCount; i++) {
+                snakeCtx.beginPath();
+                snakeCtx.moveTo(i * gridSize, 0);
+                snakeCtx.lineTo(i * gridSize, snakeCanvas.height);
+                snakeCtx.stroke();
+                
+                snakeCtx.beginPath();
+                snakeCtx.moveTo(0, i * gridSize);
+                snakeCtx.lineTo(snakeCanvas.width, i * gridSize);
+                snakeCtx.stroke();
+            }
+            
+            if (moveSnake()) {
+                drawFood();
+                drawSnake();
+                requestAnimationFrame(snakeGameTick);
+            }
+        }
+        
+        // Snake controls
+        document.addEventListener('keydown', (e) => {
+            if (!snakeGameActive) return;
+            
+            switch(e.key) {
+                case 'ArrowUp':
+                    if (snakeDirection.y === 0) nextDirection = { x: 0, y: -1 };
+                    e.preventDefault();
+                    break;
+                case 'ArrowDown':
+                    if (snakeDirection.y === 0) nextDirection = { x: 0, y: 1 };
+                    e.preventDefault();
+                    break;
+                case 'ArrowLeft':
+                    if (snakeDirection.x === 0) nextDirection = { x: -1, y: 0 };
+                    e.preventDefault();
+                    break;
+                case 'ArrowRight':
+                    if (snakeDirection.x === 0) nextDirection = { x: 1, y: 0 };
+                    e.preventDefault();
+                    break;
+            }
+        });
+        
+        snakeGameRestartBtn.addEventListener('click', startSnakeGame);
+        snakeGameCloseBtn.addEventListener('click', closeSnakeGame);
+        
+        window.addEventListener('resize', () => {
+            if (snakeGameActive) {
+                resizeSnakeCanvas();
+            }
+        });
+        
+        // Close game with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && snakeGameContainer.style.display === 'block') {
+                closeSnakeGame();
+            }
+        });       
     </script>
+    <div id="snakeGame">
+    <button class="snake-game-close" id="snakeGameClose">&times;</button>
+    <div class="snake-game-ui">
+        <div>🐍 <span class="translate" data-en="Score" data-hu="Pontszám">Score</span>: <span class="snake-game-score" id="snakeScore">0</span></div>
+        <div>🏆 <span class="translate" data-en="High Score" data-hu="Rekord">High Score</span>: <span class="snake-game-score" id="snakeHighScore">0</span></div>
+    </div>
+    <canvas id="snakeCanvas"></canvas>
+    <div class="snake-game-instructions">
+        <p class="translate" data-en="⬅️ ➡️ ⬆️ ⬇️ Use arrow keys to move | Eat the stars! ⭐" data-hu="⬅️ ➡️ ⬆️ ⬇️ Nyilak a mozgáshoz | Edd meg a csillagokat! ⭐">
+            ⬅️ ➡️ ⬆️ ⬇️ Use arrow keys to move | Eat the stars! ⭐
+        </p>
+        <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.6;" class="translate" data-en="Press 'G' three times quickly to play anytime!" data-hu="Nyomd meg a 'G'-t háromszor gyorsan a játékhoz!">
+            Press 'G' three times quickly to play anytime!
+        </p>
+    </div>
+    <div class="snake-game-over-screen" id="snakeGameOverScreen">
+        <h2 class="translate" data-en="Game Over!" data-hu="Játék vége!">Game Over!</h2>
+        <p class="translate" data-en="Final Score" data-hu="Végső pontszám">Final Score</p>
+        <p class="snake-game-score" id="snakeFinalScore" style="font-size: 3rem; margin: 1rem 0;">0</p>
+        <button class="snake-game-restart-btn" id="snakeGameRestart"><span class="translate" data-en="Play Again" data-hu="Újra játék">Play Again</span></button>
+    </div>
+</div>
 </body>
 </html>
