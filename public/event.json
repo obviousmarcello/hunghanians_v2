@@ -1,0 +1,15 @@
+{
+  "id": "get-together-2026",
+  "referencePrefix": "HG26",
+  "name": { "en": "Get Together 2026", "hu": "Ghánai találkozó 2026" },
+  "dateLabel": { "en": "August 8–9, 2026", "hu": "2026. augusztus 8–9." },
+  "start": "2026-08-08T00:00:00+02:00",
+  "end": "2026-08-09T23:59:00+02:00",
+  "registrationOpen": true,
+  "location": "Inárcs, Szőlőhegy, 2365 (KEMP)",
+  "fees": { "currency": "HUF", "adult": 10000, "child": 5000 },
+  "childAgeRange": "6–14",
+  "paymentDeadlineDays": 5,
+  "facebookUrl": "https://www.facebook.com/events/2044645652980491/",
+  "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10828.633112898493!2d19.3070943!3d47.2721604!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474193b4de4be4ed%3A0x156524f9b53e990b!2sKelet-Eur%C3%B3pa%20Misszi%C3%B3!5e0!3m2!1sen!2shu!4v1761596276211!5m2!1sen!2shu"
+}

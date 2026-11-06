@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hunghanians — Roots. Connect.</title>
+  <meta name="description" content="Hunghanians brings together the Ghanaian community in Hungary. Join our annual Get Together party.">
+  <meta name="theme-color" content="#006B3F">
+  <!-- Leave empty when the API is served from the same origin. Set to e.g. https://api.hunghanians.hu when the site is hosted separately. -->
+  <meta name="api-base" content="">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hunghanians — Roots. Connect.">
+  <meta property="og:description" content="Celebrating Ghanaian culture & community in Hungary.">
+  <meta property="og:image" content="assets/background.jpg">
+
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Sans:opsz,wght@9..40,400..700&display=swap">
+  <link rel="preload" as="image" href="assets/background.webp" type="image/webp">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <!-- Icon sprite -->
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="i-calendar" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-ticket" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M2 9a3 3 0 0 0 0 6v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3a3 3 0 0 0 0-6V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2zM13 5v2M13 17v2M13 11v2"/></symbol>
+    <symbol id="i-bank" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 21h18M12 3l9 5H3z"/></symbol>
+    <symbol id="i-user-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM19 8v6M22 11h-6"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M14 8.5V6.6c0-.9.6-1.1 1-1.1h2.6V1.6L14 1.5c-4 0-4.9 3-4.9 4.9v2.1H6.8v4h2.4V22.5H14V12.5h3.3l.4-4z"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M20 6L9 17l-5-5"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="Hunghanians home">
+        <img src="assets/logo.jpg" alt="Hunghanians" width="160" height="47">
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span class="visually-hidden" data-i18n="nav.menu">Menu</span>
+        <span class="menu-bars" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="#event" data-i18n="nav.event">Event</a></li>
+          <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+          <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+          <li><a href="#community" data-i18n="nav.community">Community</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="hu" aria-pressed="false">HU</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============================== HERO -->
+    <section class="hero" id="top">
+      <picture class="hero-bg" aria-hidden="true">
+        <source srcset="assets/background.webp" type="image/webp">
+        <img src="assets/background.jpg" alt="" fetchpriority="high">
+      </picture>
+      <div class="container hero-content">
+        <p class="eyebrow"><span class="flag-dot" aria-hidden="true"></span><span data-i18n="hero.eyebrow">Ghanaian community in Hungary</span></p>
+        <h1 class="hero-title">Akwaaba</h1>
+        <p class="hero-lead" data-i18n="hero.lead">Celebrating Ghanaian culture &amp; community in Hungary.</p>
+        <div class="hero-actions">
+          <button type="button" class="btn btn-primary" data-open-registration>
+            <svg class="icon" aria-hidden="true"><use href="#i-user-plus"/></svg>
+            <span data-i18n="cta.register">Register now</span>
+          </button>
+          <a href="#event" class="btn btn-ghost" data-i18n="hero.discover">Discover our next event</a>
+        </div>
+        <a href="#event" class="hero-chip" data-event-chip>
+          <svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>
+          <span data-event-field="name">Get Together 2026</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-event-field="dateLabel">August 8–9, 2026</span>
+        </a>
+      </div>
+      <div class="kente" aria-hidden="true"></div>
+    </section>
+
+    <!-- ============================== EVENT -->
+    <section class="section" id="event" aria-labelledby="event-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker" data-i18n="event.kicker">Upcoming event</p>
+          <h2 id="event-title" data-event-field="name">Get Together 2026</h2>
+        </header>
+
+        <div class="event-layout">
+          <article class="card event-card reveal">
+            <div class="status-row">
+              <span class="badge" data-reg-badge data-state="open" data-i18n="status.open">Registration open</span>
+            </div>
+            <p class="event-intro" data-i18n="event.intro">Hello dear friend! If you'd like to take part in the Ghanaian Get Together Party, please register below — it only takes a minute. It helps us plan food and drinks for the event.</p>
+
+            <dl class="facts">
+              <div class="fact">
+                <dt><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg><span data-i18n="event.when">When</span></dt>
+                <dd data-event-field="dateLabel">August 8–9, 2026</dd>
+              </div>
+              <div class="fact">
+                <dt><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span data-i18n="event.where">Where</span></dt>
+                <dd data-event-field="location">Inárcs, Szőlőhegy, 2365 (KEMP)</dd>
+              </div>
+              <div class="fact">
+                <dt><svg class="icon" aria-hidden="true"><use href="#i-ticket"/></svg><span data-i18n="event.fee">Participation fee</span></dt>
+                <dd>
+                  <ul class="price-list">
+                    <li><span data-i18n="event.adults">Adults</span> <strong data-price="adult">10 000 HUF</strong></li>
+                    <li><span data-i18n="event.children">Children (6–14)</span> <strong data-price="child">5 000 HUF</strong></li>
+                  </ul>
+                </dd>
+              </div>
+              <div class="fact">
+                <dt><svg class="icon" aria-hidden="true"><use href="#i-bank"/></svg><span data-i18n="event.payment">Payment</span></dt>
+                <dd data-i18n="event.paymentText">Bank transfer within 5 days of registering. Without payment we can't confirm your spot.</dd>
+              </div>
+            </dl>
+
+            <div class="card-actions">
+              <button type="button" class="btn btn-primary" data-open-registration>
+                <svg class="icon" aria-hidden="true"><use href="#i-user-plus"/></svg>
+                <span data-i18n="cta.register">Register now</span>
+              </button>
+              <a class="btn btn-outline" data-event-href="facebookUrl" href="https://www.facebook.com/events/2044645652980491/" target="_blank" rel="noopener noreferrer">
+                <svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg>
+                <span data-i18n="cta.facebook">Facebook event</span>
+              </a>
+            </div>
+          </article>
+
+          <aside class="event-side">
+            <div class="card countdown-card reveal" data-countdown>
+              <p class="countdown-label" data-countdown-label data-i18n="countdown.label">Starts in</p>
+              <div class="countdown" role="timer" aria-live="off">
+                <div><span data-unit="days">0</span><small data-i18n="countdown.days">days</small></div>
+                <div><span data-unit="hours">0</span><small data-i18n="countdown.hours">hours</small></div>
+                <div><span data-unit="minutes">0</span><small data-i18n="countdown.minutes">min</small></div>
+                <div><span data-unit="seconds">0</span><small data-i18n="countdown.seconds">sec</small></div>
+              </div>
+              <p class="countdown-done" data-countdown-done hidden></p>
+            </div>
+
+            <div class="card map-card reveal">
+              <div class="map-frame" data-map>
+                <button type="button" class="map-consent" data-map-load>
+                  <svg class="icon icon-lg" aria-hidden="true"><use href="#i-pin"/></svg>
+                  <span data-i18n="map.load">Show map</span>
+                  <small data-i18n="map.note">Loads Google Maps</small>
+                </button>
+              </div>
+              <a class="map-link" target="_blank" rel="noopener noreferrer" data-maps-link href="https://www.google.com/maps/search/?api=1&amp;query=In%C3%A1rcs%2C%20Sz%C5%91l%C5%91hegy%2C%202365">
+                <span data-i18n="map.open">Open in Google Maps</span>
+                <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== GALLERY -->
+    <section class="section section-alt" id="gallery" aria-labelledby="gallery-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker" data-i18n="gallery.kicker">Memories</p>
+          <h2 id="gallery-title" data-i18n="gallery.title">Gallery</h2>
+          <p data-i18n="gallery.lead">Moments from our previous Get Together events.</p>
+        </header>
+        <!--
+          Add photos to public/assets/gallery/ and list them here, e.g.
+          <li><button type="button" data-lightbox><img src="assets/gallery/2025-01.jpg" alt="Dancing at Get Together 2025" loading="lazy" width="800" height="800"></button></li>
+        -->
+        <ul class="gallery" data-gallery></ul>
+        <p class="empty-state" data-gallery-empty data-i18n="gallery.empty">Photos from the last Get Together are coming soon.</p>
+      </div>
+    </section>
+
+    <!-- ============================== FAQ -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container narrow">
+        <header class="section-head reveal">
+          <p class="kicker" data-i18n="faq.kicker">Good to know</p>
+          <h2 id="faq-title" data-i18n="faq.title">Frequently asked questions</h2>
+        </header>
+        <div class="faq reveal">
+          <details name="faq">
+            <summary><span data-i18n="faq.q1">How do I register?</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <p data-i18n="faq.a1">Click "Register now", fill in the short form and you'll get a confirmation email with your reference number and payment details.</p>
+          </details>
+          <details name="faq">
+            <summary><span data-i18n="faq.q2">How and when do I pay?</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <p data-i18n="faq.a2">By bank transfer within 5 days of registering. Please put your reference number in the transfer comment so we can match your payment.</p>
+          </details>
+          <details name="faq">
+            <summary><span data-i18n="faq.q3">How much does it cost for children?</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <p data-i18n="faq.a3">Children aged 6–14 pay the reduced fee. Let us know about younger children in the form so we can plan for them too.</p>
+          </details>
+          <details name="faq">
+            <summary><span data-i18n="faq.q4">Can I change or cancel my registration?</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <p data-i18n="faq.a4">Yes — just reply to your confirmation email or use the contact form below, and mention your reference number.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== COMMUNITY -->
+    <section class="section section-alt" id="community" aria-labelledby="community-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker" data-i18n="community.kicker">Who we are</p>
+          <h2 id="community-title" data-i18n="community.title">Community</h2>
+        </header>
+        <div class="info-grid">
+          <article class="card info-card reveal">
+            <span class="info-emoji" aria-hidden="true">🇬🇭</span>
+            <h3 data-i18n="community.historyTitle">Our history</h3>
+            <p data-i18n="community.history">Coming soon.</p>
+          </article>
+          <article class="card info-card reveal">
+            <span class="info-emoji" aria-hidden="true">🎉</span>
+            <h3 data-i18n="community.partyTitle">Annual Get Together</h3>
+            <p data-i18n="community.party">Our annual Get Together Party is the centre of our community's life in Hungary.</p>
+          </article>
+          <article class="card info-card reveal">
+            <span class="info-emoji" aria-hidden="true">🇭🇺</span>
+            <h3 data-i18n="community.bridgeTitle">Two homes</h3>
+            <p data-i18n="community.bridge">Ghanaians, Hungarians and friends of both — everyone is welcome.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CONTACT -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <picture class="contact-bg" aria-hidden="true">
+        <source srcset="assets/background_down.webp" type="image/webp">
+        <img src="assets/background_down.jpg" alt="" loading="lazy">
+      </picture>
+      <div class="container contact-layout">
+        <div class="contact-copy reveal">
+          <p class="kicker" data-i18n="contact.kicker">Stay connected</p>
+          <h2 id="contact-title" data-i18n="contact.title">Get in touch</h2>
+          <p data-i18n="contact.lead">Questions about the event, ideas, or just want to say hello? Send us a message and an organiser will reply by email.</p>
+        </div>
+
+        <form class="card form contact-form reveal" data-form="contact" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="c-name" data-i18n="form.name">Name</label>
+              <input id="c-name" name="name" autocomplete="name" required maxlength="100">
+              <p class="field-error" data-error-for="name"></p>
+            </div>
+            <div class="field">
+              <label for="c-email" data-i18n="form.email">Email</label>
+              <input id="c-email" name="email" type="email" autocomplete="email" required maxlength="254">
+              <p class="field-error" data-error-for="email"></p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="c-subject" data-i18n="form.subject">Subject</label>
+            <input id="c-subject" name="subject" required maxlength="150">
+            <p class="field-error" data-error-for="subject"></p>
+          </div>
+          <div class="field">
+            <label for="c-message" data-i18n="form.message">Message</label>
+            <textarea id="c-message" name="message" rows="5" required maxlength="5000"></textarea>
+            <p class="field-error" data-error-for="message"></p>
+          </div>
+          <div class="hp" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
+          <p class="form-status" role="status" data-form-status></p>
+          <button type="submit" class="btn btn-primary btn-block">
+            <svg class="icon" aria-hidden="true"><use href="#i-send"/></svg>
+            <span data-i18n="form.send">Send message</span>
+          </button>
+          <div class="form-success" data-form-success hidden>
+            <span class="success-icon"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-check"/></svg></span>
+            <h3 data-i18n="contact.sentTitle">Message sent!</h3>
+            <p data-i18n="contact.sentText">Thanks for writing to us. We've emailed you a copy and will get back to you soon.</p>
+            <button type="button" class="btn btn-outline" data-form-reset data-i18n="contact.another">Send another message</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img src="assets/logo-white.jpg" alt="Hunghanians" width="140" height="38" loading="lazy">
+      <p>&copy; <span data-year>2026</span> Hunghanians — Roots. Connect.</p>
+      <a href="#" class="footer-egg" data-snake-open data-i18n="footer.egg">Psst… press G three times</a>
+    </div>
+  </footer>
+
+  <!-- ============================== REGISTRATION DIALOG -->
+  <dialog class="dialog" id="registration" aria-labelledby="reg-title">
+    <div class="dialog-head">
+      <div>
+        <p class="kicker" data-event-field="name">Get Together 2026</p>
+        <h2 id="reg-title" data-i18n="reg.title">Register</h2>
+      </div>
+      <button type="button" class="icon-btn" data-dialog-close aria-label="Close">
+        <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+    </div>
+
+    <form class="form" data-form="register" novalidate>
+      <div class="dialog-body">
+        <div class="notice" data-reg-closed hidden></div>
+        <div class="field-row">
+          <div class="field">
+            <label for="r-name" data-i18n="form.fullName">Full name</label>
+            <input id="r-name" name="name" autocomplete="name" required maxlength="100">
+            <p class="field-error" data-error-for="name"></p>
+          </div>
+          <div class="field">
+            <label for="r-email" data-i18n="form.email">Email</label>
+            <input id="r-email" name="email" type="email" autocomplete="email" required maxlength="254">
+            <p class="field-error" data-error-for="email"></p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="r-phone"><span data-i18n="form.phone">Phone</span> <span class="optional" data-i18n="form.optional">optional</span></label>
+          <input id="r-phone" name="phone" type="tel" autocomplete="tel" maxlength="25" placeholder="+36 30 123 4567">
+          <p class="field-error" data-error-for="phone"></p>
+        </div>
+
+        <fieldset class="steppers">
+          <legend data-i18n="reg.who">Who's coming?</legend>
+          <div class="stepper">
+            <div><strong data-i18n="event.adults">Adults</strong><small data-price="adult">10 000 HUF</small></div>
+            <div class="stepper-ctrl">
+              <button type="button" data-step="-1" aria-label="−">−</button>
+              <input name="adults" type="number" inputmode="numeric" min="1" max="20" value="1" aria-label="Adults">
+              <button type="button" data-step="1" aria-label="+">+</button>
+            </div>
+          </div>
+          <div class="stepper">
+            <div><strong data-i18n="event.children">Children (6–14)</strong><small data-price="child">5 000 HUF</small></div>
+            <div class="stepper-ctrl">
+              <button type="button" data-step="-1" aria-label="−">−</button>
+              <input name="children" type="number" inputmode="numeric" min="0" max="20" value="0" aria-label="Children">
+              <button type="button" data-step="1" aria-label="+">+</button>
+            </div>
+          </div>
+          <div class="stepper">
+            <div><strong data-i18n="reg.infants">Children under 6</strong><small data-i18n="reg.free">free</small></div>
+            <div class="stepper-ctrl">
+              <button type="button" data-step="-1" aria-label="−">−</button>
+              <input name="infants" type="number" inputmode="numeric" min="0" max="20" value="0" aria-label="Children under 6">
+              <button type="button" data-step="1" aria-label="+">+</button>
+            </div>
+          </div>
+          <p class="field-error" data-error-for="adults"></p>
+          <div class="total">
+            <span data-i18n="reg.total">Total</span>
+            <output data-total>10 000 HUF</output>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="r-dietary"><span data-i18n="reg.dietary">Dietary needs or allergies</span> <span class="optional" data-i18n="form.optional">optional</span></label>
+          <input id="r-dietary" name="dietary" maxlength="500">
+        </div>
+        <div class="field">
+          <label for="r-notes"><span data-i18n="reg.notes">Anything else we should know?</span> <span class="optional" data-i18n="form.optional">optional</span></label>
+          <textarea id="r-notes" name="notes" rows="2" maxlength="1000"></textarea>
+        </div>
+        <label class="check">
+          <input type="checkbox" name="consent" required>
+          <span data-i18n="reg.consent">I agree that the organisers store my details to organise this event and contact me about it.</span>
+        </label>
+        <p class="field-error" data-error-for="consent"></p>
+        <div class="hp" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
+        <p class="form-status" role="status" data-form-status></p>
+      </div>
+      <div class="dialog-foot">
+        <button type="submit" class="btn btn-primary btn-block">
+          <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+          <span data-i18n="reg.submit">Complete registration</span>
+        </button>
+      </div>
+    </form>
+
+    <div class="dialog-body reg-success" data-reg-success hidden>
+      <span class="success-icon"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-check"/></svg></span>
+      <h3 data-i18n="reg.doneTitle">You're registered!</h3>
+      <p data-reg-email-note></p>
+      <div class="pay-box">
+        <h4 data-i18n="reg.payTitle">Next step: pay by bank transfer</h4>
+        <dl>
+          <div><dt data-i18n="reg.reference">Reference</dt><dd><code data-reg-ref></code> <button type="button" class="icon-btn small" data-copy-ref aria-label="Copy"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></dd></div>
+          <div><dt data-i18n="reg.amount">Amount</dt><dd data-reg-amount></dd></div>
+          <div data-bank-row hidden><dt data-i18n="reg.beneficiary">Beneficiary</dt><dd data-bank-name></dd></div>
+          <div data-bank-row hidden><dt data-i18n="reg.account">Account number</dt><dd data-bank-number></dd></div>
+        </dl>
+        <p class="small" data-i18n="reg.payNote">Please transfer within 5 days and put your reference in the comment.</p>
+      </div>
+      <button type="button" class="btn btn-outline" data-dialog-close data-i18n="reg.close">Done</button>
+    </div>
+  </dialog>
+
+  <!-- ============================== LIGHTBOX -->
+  <dialog class="lightbox" id="lightbox" aria-label="Photo">
+    <button type="button" class="icon-btn" data-dialog-close aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+    <img alt="" data-lightbox-img>
+  </dialog>
+</body>
+</html>
